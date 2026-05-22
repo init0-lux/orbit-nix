@@ -1,0 +1,15 @@
+name: Update
+on:
+  schedule:
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Update Version
+        run: |
+          # Logic to check for new release and update pkgs/orbit.nix
+          # This is a placeholder for the update script logic
+          echo "Checking for updates..."
