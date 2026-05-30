@@ -8,7 +8,12 @@
   nss,
   nspr,
   libsecret,
-  xorg,
+  alsa-lib,
+  mesa,
+  libdrm,
+  libxdamage,
+  libxext,
+  libxfixes,
   dbus,
   at-spi2-core,
   cups,
@@ -37,16 +42,19 @@ stdenv.mkDerivation {
     nss
     nspr
     libsecret
-    xorg.libXdamage
-    xorg.libXext
-    xorg.libXfixes
+    alsa-lib
+    mesa
+    libdrm
+    libxdamage
+    libxext
+    libxfixes
     dbus
     at-spi2-core
     cups
     gtk3
   ];
 
-  unpackPhase = "dpkg-deb -x $src .";
+  unpackPhase = "dpkg-deb --fsys-tarfile $src | tar -x --no-same-permissions";
 
   installPhase = ''
     mkdir -p $out/bin $out/share $out/lib
