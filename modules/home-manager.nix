@@ -5,22 +5,20 @@
   ...
 }:
 
-with lib;
-
 let
   cfg = config.programs.orbit;
 in
 {
-  options.programs.orbit = {
-    enable = mkEnableOption "Expo Orbit";
-    package = mkOption {
-      type = types.package;
-      default = pkgs.orbit;
-      description = "The orbit package to use.";
-    };
-  };
+  imports = [ ./shared.nix ];
 
-  config = mkIf cfg.enable {
+  config = lib.mkIf cfg.enable {
+    assertions = [
+      {
+        assertion = pkgs.stdenv.isx86_64;
+        message = "Expo Orbit only supports x86_64-linux";
+      }
+    ];
+
     home.packages = [ cfg.package ];
   };
 }
