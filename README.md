@@ -7,14 +7,14 @@ Nix-native packaging for [Expo Orbit](https://github.com/expo/orbit) — the Rea
 ### Via Flakes (recommended)
 
 ```bash
-nix profile install github:init0-labs/orbit-nix
+nix profile install github:init0-lux/orbit-nix
 ```
 
 Or add to your flake inputs:
 
 ```nix
 {
-  inputs.orbit-nix.url = "github:init0-labs/orbit-nix";
+  inputs.orbit-nix.url = "github:init0-lux/orbit-nix";
 
   outputs = { self, nixpkgs, orbit-nix, ... }: {
     nixosConfigurations.YOUR_HOST = nixpkgs.lib.nixosSystem {
@@ -34,7 +34,7 @@ Or add to your flake inputs:
 
 ```nix
 {
-  inputs.orbit-nix.url = "github:init0-labs/orbit-nix";
+  inputs.orbit-nix.url = "github:init0-lux/orbit-nix";
 
   outputs = { self, nixpkgs, home-manager, orbit-nix, ... }: {
     homeConfigurations.YOUR_USER = home-manager.lib.homeManagerConfiguration {
@@ -55,7 +55,7 @@ Or add to your flake inputs:
 If the standard package has Electron sandbox or filesystem compatibility issues, use the FHS variant which runs Orbit inside a `buildFHSEnv` with `android-tools` available:
 
 ```bash
-nix run github:init0-labs/orbit-nix#orbit-fhs
+nix run github:init0-lux/orbit-nix#orbit-fhs
 ```
 
 ## Configuration
