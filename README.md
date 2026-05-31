@@ -6,6 +6,14 @@ Nix-native packaging for [Expo Orbit](https://github.com/expo/orbit) — the Rea
 
 ### Via Flakes (recommended)
 
+Run directly (no install needed):
+
+```bash
+nix run github:init0-lux/orbit-nix
+```
+
+Or install to your profile:
+
 ```bash
 nix profile install github:init0-lux/orbit-nix
 ```
@@ -52,10 +60,15 @@ Or add to your flake inputs:
 
 ### FHS Variant
 
-If the standard package has Electron sandbox or filesystem compatibility issues, use the FHS variant which runs Orbit inside a `buildFHSEnv` with `android-tools` available:
+The default package (`orbit-fhs`) runs Orbit inside a `buildFHSEnv` with:
+- Android SDK integration (`ANDROID_HOME`, `ANDROID_SDK_ROOT`, `PATH`)
+- OpenGL/EGL libraries for Electron's GPU process
+- Android emulator shared library support
+
+If you want the standard (non-FHS) package:
 
 ```bash
-nix run github:init0-lux/orbit-nix#orbit-fhs
+nix run github:init0-lux/orbit-nix#orbit
 ```
 
 ## Configuration
