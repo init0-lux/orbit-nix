@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-PACKAGE_FILE="pkgs/by-name/or/orbit/package.nix"
+PACKAGE_FILE="pkgs/by-name/ex/expo-orbit-bin/package.nix"
 GITHUB_REPO="expo/orbit"
 
 current_version() {
@@ -21,7 +21,7 @@ download_hash() {
   tmp=$(mktemp)
 
   curl -sSfL -o "$tmp" "$url"
-  nix hash to-sri --type sha256 "$(nix hash file --type sha256 "$tmp")"
+  nix hash convert --hash-algo sha256 --to sri "$(nix hash file --type sha256 "$tmp")"
   rm -f "$tmp"
 }
 
@@ -42,7 +42,7 @@ main() {
 
   sed -i \
     -e "s/version = \"${current}\"/version = \"${latest}\"/" \
-    -e "s/sha256 = \".*\"/sha256 = \"${new_hash}\"/" \
+    -e "s/hash = \".*\"/hash = \"${new_hash}\"/" \
     "$PACKAGE_FILE"
 
   echo "Updated ${PACKAGE_FILE}"

@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: cachix/install-nix-action@v27
-      - run: bash scripts/update.sh
+      - run: nix shell nixpkgs#curl nixpkgs#jq -c bash scripts/update.sh
       - uses: peter-evans/create-pull-request@v7
         with:
           title: "orbit: update to latest release"
