@@ -29,6 +29,7 @@
         packages = {
           default = pkgs.callPackage ./pkgs/orbit-fhs.nix { inherit (pkgs) orbit; };
           orbit = pkgs.callPackage ./pkgs/by-name/or/orbit/package.nix { };
+          expo-orbit-bin = pkgs.callPackage ./pkgs/by-name/ex/expo-orbit-bin/package.nix { };
           orbit-fhs = pkgs.callPackage ./pkgs/orbit-fhs.nix { inherit (pkgs) orbit; };
         };
 
