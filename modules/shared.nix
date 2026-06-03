@@ -9,8 +9,8 @@
     enable = lib.mkEnableOption "Expo Orbit";
     package = lib.mkOption {
       type = lib.types.package;
-      default = pkgs.orbit;
-      description = "The orbit package to use.";
+      default = pkgs.expo-orbit-bin;
+      description = "The Expo Orbit package to use.";
     };
   };
 }

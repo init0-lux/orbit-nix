@@ -60,15 +60,21 @@ Or add to your flake inputs:
 
 ### FHS Variant
 
-The default package (`orbit-fhs`) runs Orbit inside a `buildFHSEnv` with:
+The FHS variant (`orbit-fhs`) runs Orbit inside a `buildFHSEnv` with:
 - Android SDK integration (`ANDROID_HOME`, `ANDROID_SDK_ROOT`, `PATH`)
 - OpenGL/EGL libraries for Electron's GPU process
 - Android emulator shared library support
 
-If you want the standard (non-FHS) package:
+The default package is the standard (non-FHS) package:
 
 ```bash
-nix run github:init0-lux/orbit-nix#orbit
+nix run github:init0-lux/orbit-nix
+```
+
+If you want the FHS variant:
+
+```bash
+nix run github:init0-lux/orbit-nix#orbit-fhs
 ```
 
 ## Configuration
@@ -78,7 +84,7 @@ Both the NixOS and Home Manager modules expose the same options:
 ```nix
 programs.orbit = {
   enable = true;
-  package = pkgs.orbit; # or pkgs.orbit-fhs
+  package = pkgs.expo-orbit-bin; # or pkgs.orbit-fhs
 };
 ```
 
