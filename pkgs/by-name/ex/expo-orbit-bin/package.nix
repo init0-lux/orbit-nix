@@ -21,7 +21,7 @@
 }:
 
 let
-  version = "2.6.0";
+  version = "2.8.1";
 
   # For Nixpkgs: if/when you add yourself to nixpkgs' maintainers list,
   # you can switch this to `with maintainers; [ "init0-lux" ];` style.
@@ -38,7 +38,7 @@ stdenvNoCC.mkDerivation {
 
   src = fetchurl {
     url = "https://github.com/expo/orbit/releases/download/expo-orbit-v${version}/expo-orbit_${version}_amd64.deb";
-    hash = "sha256-Y4sQu1prBVTfVMmqJ/Hdv5V3otpp6q/Ugq8KppJh1kE=";
+    hash = "sha256-FhfExImaFTHEyK5zqeuExvlFLWECZ16Gk2DBGFlVc0g=";
   };
 
   nativeBuildInputs = [
